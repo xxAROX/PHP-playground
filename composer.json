@@ -11,6 +11,9 @@
             "email": "arox.email.0@gmail.com"
         }
     ],
+    "scripts": {
+        "start": "@php -S 0.0.0.0:8080"
+    },
     "require": {
         "catfan/medoo": "^2.1"
     }

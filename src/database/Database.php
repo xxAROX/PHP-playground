@@ -1,17 +1,15 @@
 <?php
 namespace xxAROX\Playground\database;
 use Medoo\Medoo;
+use xxAROX\Playground\utils\Utils;
 
 final class Database {
     private Medoo $medoo;
 
-    public function __construct(array $credentials) {
+    public function __construct() {
         $this->medoo = new Medoo([
-            "host" => "0.0.0.0",
-            "type" => "mariadb",
-            "database" => "mariadb",
-            "username" => "mariadb",
-            "password" => "mariadb",
+            "type" => "sqlite",
+            "database_name" => Utils::folder_resources("database.db")
         ]);
     }
 }

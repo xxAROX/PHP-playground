@@ -7,8 +7,8 @@ ini_set('display_errors', 1);
 
 require_once __DIR__ . "/vendor/autoload.php";
 
-
-var_dump(class_exists(Database::class));
+$db = new Database();
+global $db;
 
 ?>
 <!DOCTYPE html>
