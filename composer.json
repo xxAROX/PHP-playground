@@ -1,0 +1,17 @@
+{
+    "name": "xxarox/playground",
+    "autoload": {
+        "psr-4": {
+            "xxAROX\\Playground\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jan Sohn",
+            "email": "arox.email.0@gmail.com"
+        }
+    ],
+    "require": {
+        "catfan/medoo": "^2.1"
+    }
+}
