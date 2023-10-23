@@ -12,4 +12,19 @@ final class Database {
             "database_name" => Utils::folder_resources("database.db")
         ]);
     }
+    public function medoo(): Medoo{
+        return $this->medoo;
+    }
+    private function initialize(): void{
+        $this->medoo->create(
+            "users",
+            [
+                "id" => ["INTEGER", "PRIMARY KEY", "AUTO_INCREMENT", "NOT NULL", "UNIQUE"],
+                "email"=> ["VARCHAR(320)", "NOT NULL", "UNIQUE"],
+                "password"=> ["VARCHAR(128)", "NOT NULL"],
+                "created"=> ["TIMESTAMP", "NOT NULL"],
+                "settings"=> ["BLOB", "DEFAULT '{}'"],
+            ]
+        );
+    }
 }
