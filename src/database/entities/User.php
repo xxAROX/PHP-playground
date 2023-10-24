@@ -26,5 +26,21 @@ class User {
     public function getId(): ?string {
         return $this->id;
     }
+
+    public function getEmail(): string {
+        return $this->email;
+    }
+
+    public function getHashedPassword(): string {
+        return $this->hashed_password;
+    }
+
+    public function getCreated(): int {
+        return $this->created;
+    }
+
+    public function getSettings(): array {
+        return $this->settings;
+    }
     
 }

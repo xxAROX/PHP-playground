@@ -1,6 +1,6 @@
 <div class="container w-50 h-50">
-  <form method="post" action="./assets/php/auth/register.php">
-    <h1 class="h3 mb-3 fw-normal">Please register a new Account</h1>
+  <form method="post" action="./assets/php/auth/login.php">
+    <h1 class="h3 mb-3 fw-normal">Please login to your Account</h1>
 
     <div class="form">
       <div class="form-floating m-1">
@@ -20,8 +20,8 @@
       </label>
     </div-->
     <div class="text-center d-flex">
-      <button class="btn btn-primary w-50 m-1" type="button" onclick="window.location.href = '/?action=login';">Login</button>
-      <button class="btn btn-primary w-50 m-1" type="submit">Sign up</button>
+      <button class="btn btn-primary w-50 m-1" type="button" onclick="window.location.href = `/?action=register`;">Register</button>
+      <button class="btn btn-primary w-50 m-1" type="submit">Sign in</button>
     </div>
   </form>
 </div>

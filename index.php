@@ -2,9 +2,6 @@
 namespace xxAROX\Playground;
 use xxAROX\Playground\database\Database;
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once __DIR__ . "/vendor/autoload.php";
 
 $db = new Database();
@@ -12,7 +9,10 @@ global $db;
 
 if (session_status() == PHP_SESSION_NONE) session_start();
 
-$user = $_SESSION["username"] ?? null;
+$user_id = $_SESSION["user_id"] ?? null;
+$user = $db->users[$user_id] ?? null;
+$method = mb_strtolower($_GET["action"] ?? "");
+
 
 ?>
 <!DOCTYPE html>
@@ -25,11 +25,33 @@ $user = $_SESSION["username"] ?? null;
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <?php include_once __DIR__ ."/views/components/navbar.php"; ?>
+    <?php
+    if (isset($_SESSION["error"])) {
+        echo "[ERROR] ". $_SESSION["error"];
+        unset($_SESSION["error"]);
+    }
+    if (isset($_SESSION["success"])) {
+        echo "[SUCCESS] ". $_SESSION["success"];
+        unset($_SESSION["success"]);
+    }
+    include_once __DIR__ ."/views/components/navbar.php"; ?>
 
     <?php
-    if (is_null($user)) {
-        include_once __DIR__ ."/views/sites/register.php";
+    switch (true) {
+        case $method === "register":
+            include_once __DIR__ ."/views/sites/register.php";
+            break;
+        case $method === "login" || is_null($user):
+            include_once __DIR__ ."/views/sites/login.php";
+            break;
+        case $method === "logout" && !is_null($user):
+            session_destroy();
+            header("Location: /?action=login");
+            break;
+        
+        default:
+            // IGNORE
+            break;
     }
     ?>
 

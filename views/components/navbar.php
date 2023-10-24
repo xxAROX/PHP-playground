@@ -1,6 +1,3 @@
-<?php
-
-?>
 <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Playground</a>
@@ -18,7 +15,9 @@
           </li>
         </ul>
         <form role="search">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <?php if ($user != null): ?>
+            <button class="btn btn-outline-danger" type="button" onclick="window.location.href = '/?action=logout';">Logout</button>
+          <?php endif ?>
         </form>
       </div>
     </div>
