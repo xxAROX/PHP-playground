@@ -27,11 +27,11 @@ $method = mb_strtolower($_GET["action"] ?? "");
 <body>
     <?php
     if (isset($_SESSION["error"])) {
-        echo "[ERROR] ". $_SESSION["error"];
+        echo "[ERROR]: ". $_SESSION["error"];
         unset($_SESSION["error"]);
     }
-    if (isset($_SESSION["success"])) {
-        echo "[SUCCESS] ". $_SESSION["success"];
+    if (isset($_SESSION["success"])) { 
+        echo "[SUCCESS]: ". $_SESSION["success"];
         unset($_SESSION["success"]);
     }
     include_once __DIR__ ."/views/components/navbar.php"; ?>
