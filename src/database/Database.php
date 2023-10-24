@@ -9,7 +9,7 @@ final class Database {
     public function __construct() {
         $this->medoo = new Medoo([
             "type" => "sqlite",
-            "database_name" => Utils::folder_resources("database.db")
+            "database_name" => Utils::folder_resources("database.db"),
         ]);
     }
     public function medoo(): Medoo{

@@ -10,6 +10,8 @@ require_once __DIR__ . "/vendor/autoload.php";
 $db = new Database();
 global $db;
 
+if (session_status() == PHP_SESSION_NONE) session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +24,6 @@ global $db;
 </head>
 <body>
     <?php include_once __DIR__ ."/views/components/navbar.php"; ?>
-    <main>
-        <?php include_once __DIR__ ."/views/components/carousel.php"; ?>
-    </main>
 
     <script src="./assets/javascript/main.js"></script>
     <script src="./assets/javascript/bootstrap.bundle.min.js"></script>
