@@ -12,6 +12,8 @@ global $db;
 
 if (session_status() == PHP_SESSION_NONE) session_start();
 
+$user = $_SESSION["username"] ?? null;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +26,12 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 </head>
 <body>
     <?php include_once __DIR__ ."/views/components/navbar.php"; ?>
+
+    <?php
+    if (is_null($user)) {
+        include_once __DIR__ ."/views/sites/register.php";
+    }
+    ?>
 
     <script src="./assets/javascript/main.js"></script>
     <script src="./assets/javascript/bootstrap.bundle.min.js"></script>
