@@ -53,12 +53,19 @@ $method = mb_strtolower($_GET["action"] ?? "");
             $_SESSION["success"] = "Successfully logged out!";
             header("Location: /?action=login");
             break;
+        case $method === "admin-panel" && $user?->isAdmin():
+            include_once __DIR__ ."/views/sites/admin-panel.php";
+            break;
+        case $method === "settings" && !is_null($user):
+            include_once __DIR__ ."/views/sites/settings.php";
+            break;
         
         default:
             // IGNORE
             break;
     }
     ?>
+    <?php include_once __DIR__ ."/views/components/footer.php"; ?>
 
     <script src="./assets/javascript/main.js"></script>
     <script src="./assets/javascript/bootstrap.bundle.min.js"></script>

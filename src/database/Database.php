@@ -49,6 +49,11 @@ final class Database {
                 "TIMESTAMP",
                 "NOT NULL",
             ],
+            "admin" => [
+                "VARCHAR(1)",
+                "NOT NULL",
+                "DEFAULT 'n'",
+            ],
             "settings" => [
                 "BLOB",
                 "DEFAULT '{}'"
@@ -57,13 +62,14 @@ final class Database {
     }
 
     private function load(): void{
-        $users = $this->medoo->select("users", ["id", "email", "password", "created", "settings"]);
+        $users = $this->medoo->select("users", ["id", "email", "password", "created", "admin", "settings"]);
         foreach($users as $k => $user) {
             $this->users[$user["id"]] = new User(
                 $user["id"],
                 $user["email"],
                 $user["password"],
                 strtotime($user["created"]),
+                $user["admin"] == "y",
                 json_decode($user["settings"], true),
             );
         }
@@ -78,8 +84,8 @@ final class Database {
         $this->medoo->insert("users", [
             "email"=> $email,
             "password"=> md5($password),
-            "settings" => "{}",
             "created" => date("Y-m-d H:i:s"),
+            "admin" => count($this->users) == 0 ? "y" : "n",
         ]);
         [$id, $created] = $this->medoo->get("users", ["id", "created"], ["email" => $email]);
         $user = new User(
@@ -87,6 +93,7 @@ final class Database {
             $email,
             md5($password),
             strtotime($created),
+            count($this->users) == 0,
             []
         );
         $this->users[$id] = $user;

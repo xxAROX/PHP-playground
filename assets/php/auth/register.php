@@ -26,6 +26,11 @@ if ($database->isUserRegistered($email)) {
     return;
 }
 $user = $database->createUser($email, $password);
+if ($user == null) {
+    $_SESSION["error"] = "Internal server error";
+    header("Location: /");
+    return;
+}
 $_SESSION["user_id"] = $user->getId();
 $_SESSION["success"] = "Successfully registered!";
 header("Location: /");
