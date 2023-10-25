@@ -13,7 +13,7 @@ if (!$database->isUserRegistered($email)) {
     return;
 }
 
-$password = $_POST["password"] ?? "";
+$password = $_POST["current-password"] ?? "";
 if (md5($password) !== $database->getUserByEmail($email)?->getHashedPassword()) {
     $_SESSION["error"] = "Email or password is wrong or not found!";
     header("Location: /?action=login");

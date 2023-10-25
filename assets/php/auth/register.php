@@ -7,9 +7,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header("Location: /?action=register");
     return;
 }
-$password = $_POST["password"] ?? "";
 
-
+$password = $_POST["current-password"] ?? "";
 $uppercase = preg_match('@[A-Z]@', $password);
 $lowercase = preg_match('@[a-z]@', $password);
 $number    = preg_match('@[0-9]@', $password);

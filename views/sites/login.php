@@ -8,7 +8,7 @@
         <label for="email">Email address</label>
       </div>
       <div class="form-floating m-1">
-        <input type="password" class="form-control" name="password" id="current-password" placeholder="Password">
+        <input type="password" class="form-control" name="current-password" id="current-password" placeholder="Password" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="current-password">
         <label for="current-password">Password</label>
       </div>
     </div>

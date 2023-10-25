@@ -22,17 +22,20 @@ $method = mb_strtolower($_GET["action"] ?? "");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP-Playground</title>
     <link href="./assets/css/main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+    <script src="./assets/javascript/utils.js"></script>
     <?php
-    if (isset($_SESSION["error"])) {
-        echo "[ERROR]: ". $_SESSION["error"];
-        unset($_SESSION["error"]);
+    if (isset($_SESSION["error"])) { ?>
+        <script>showToast({text: `<?= $_SESSION["error"] ?>`, icon: TOAST_ICONS["Error"]})</script>
+    <?php unset($_SESSION["error"]);
     }
-    if (isset($_SESSION["success"])) { 
-        echo "[SUCCESS]: ". $_SESSION["success"];
-        unset($_SESSION["success"]);
+    if (isset($_SESSION["success"])) { ?>
+        <script>showToast({text: `<?= $_SESSION["success"] ?>`, icon: TOAST_ICONS["Success"]})</script>
+    <?php unset($_SESSION["success"]);
     }
     include_once __DIR__ ."/views/components/navbar.php"; ?>
 
@@ -46,6 +49,8 @@ $method = mb_strtolower($_GET["action"] ?? "");
             break;
         case $method === "logout" && !is_null($user):
             session_destroy();
+            session_start();
+            $_SESSION["success"] = "Successfully logged out!";
             header("Location: /?action=login");
             break;
         
