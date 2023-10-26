@@ -20,7 +20,7 @@
       </label>
     </div-->
     <div class="text-center d-flex">
-      <button class="btn btn-primary w-50 m-1" type="button" onclick="window.location.href = `/?action=register`;">Register</button>
+      <button class="btn btn-success w-50 m-1" type="button" onclick="window.location.href = `/?action=register`;">Register</button>
       <button class="btn btn-primary w-50 m-1" type="submit">Sign in</button>
     </div>
   </form>

@@ -65,7 +65,7 @@ $method = mb_strtolower($_GET["action"] ?? "");
             break;
     }
     ?>
-    <?php include_once __DIR__ ."/views/components/footer.php"; ?>
+    <!--?php include_once __DIR__ ."/views/components/footer.php"; ?-->
 
     <script src="./assets/javascript/main.js"></script>
     <script src="./assets/javascript/bootstrap.bundle.min.js"></script>
