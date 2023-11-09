@@ -23,7 +23,7 @@ $method = mb_strtolower($_GET["action"] ?? "");
     <title>PHP-Playground</title>
     <link href="./assets/css/main.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
@@ -68,6 +68,6 @@ $method = mb_strtolower($_GET["action"] ?? "");
     <!--?php include_once __DIR__ ."/views/components/footer.php"; ?-->
 
     <script src="./assets/javascript/main.js"></script>
-    <script src="./assets/javascript/bootstrap.bundle.min.js"></script>
+    <script src="./vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
